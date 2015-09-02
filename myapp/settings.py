@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'testapp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,3 +102,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BROKER_URL = 'amqp://myapp:mypassword@localhost:5672/myapp'
+CELERYD_HIJACK_ROOT_LOGGER = False
+CELERYD_TASK_TIME_LIMIT = 5 * 60 # By default, no task should run for longer than 5 minutes.
+CELERY_IGNORE_RESULT = True
+CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+
