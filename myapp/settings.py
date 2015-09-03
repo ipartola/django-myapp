@@ -103,10 +103,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BROKER_URL = 'amqp://myapp:mypassword@localhost:5672/myapp'
+#BROKER_URL = 'amqp://myapp:mypassword@localhost:5672/myapp'
 CELERYD_HIJACK_ROOT_LOGGER = False
 CELERYD_TASK_TIME_LIMIT = 5 * 60 # By default, no task should run for longer than 5 minutes.
 CELERY_IGNORE_RESULT = True
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 
+BROKER_URL = 'redis://localhost:6379/0'
+BROKER_TRANSPORT_OPTIONS = {
+    'fanout_prefix': True,
+    'fanout_patterns': True,
+    'visibility_timeout': 43200,
+}
+CELERY_TASK_RESULT_EXPIRES = 60 * 60 # Only needed if you want to store results of celery tasks
+CELERY_RESULT_PERSISTENT = False # Only needed if you want to store results of celery tasks
 
