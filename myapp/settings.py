@@ -118,3 +118,14 @@ BROKER_TRANSPORT_OPTIONS = {
 CELERY_TASK_RESULT_EXPIRES = 60 * 60 # Only needed if you want to store results of celery tasks
 CELERY_RESULT_PERSISTENT = False # Only needed if you want to store results of celery tasks
 
+from kombu import Queue
+
+CELERY_QUEUES = (
+    Queue('celery', routing_key='celery'),
+    Queue('slow_celery', routing_key='celery.slow'),
+)
+
+CELERY_DEFAULT_QUEUE = 'celery'
+CELERY_DEFAULT_ROUTING_KEY = 'celery'
+CELERY_DEFAULT_EXCHANGE_TYPE = 'direct'
+
