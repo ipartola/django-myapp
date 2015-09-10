@@ -1,0 +1,11 @@
+.DS_Store
+*.pyc
+.vagrant
+.vagrant*
+log/
+
+tmp/
+build/
+node_modules/
+.vagrant
+db.sqlite3

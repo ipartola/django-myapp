@@ -1,0 +1,4 @@
+#!/bin/sh
+
+if [ -e /srv/myapp/conf/environ ]; then . /srv/myapp/conf/environ; fi
+exec /srv/myapp/env/bin/python /srv/myapp/releases/current/manage.py "$@"

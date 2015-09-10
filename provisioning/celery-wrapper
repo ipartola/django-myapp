@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. /srv/myapp/conf/environ
+export PYTHONPATH="/srv/myapp/releases/current:$PYTHONPATH"
+exec  /srv/myapp/env/bin/celery "$@"
