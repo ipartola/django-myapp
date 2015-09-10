@@ -1,7 +1,7 @@
 from __future__ import unicode_literals, print_function, absolute_import, division
 
-from fabric.api import env, sudo, require, cd, local, put, run, lcd, shell_env, serial
-from fabric.colors import cyan, green, red
+from fabric.api import env, sudo, require, cd, local, put, run, lcd, serial
+from fabric.colors import cyan, green
 import time
 import sys
 import os
@@ -255,7 +255,7 @@ def deploy_secrets(do_restarts=True):
 
 def deploy_manage_wrapper():
     template_filename = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'provisioning/manage-wrapper'))
-    target = '/srv/myapp/env/bin/manage'.format(**env)
+    target = '/srv/myapp/env/bin/manage-wrapper'.format(**env)
     put(template_filename, target, mode=0755, use_sudo=True)
     sudo('chown {server_owner:s}:{server_group:s} {target:s}'.format(target=target, **env))
 
